@@ -1,0 +1,13 @@
+path: "C:/Users/21435/Desktop/railway2/data"
+train: "C:/Users/21435/Desktop/railway2/train/images"
+val: "C:/Users/21435/Desktop/railway2/val/images"
+test: "C:/Users/21435/Desktop/railway2/try"
+nc: 3
+names: ['error1','error2','error3']
+
+roboflow:
+  workspace: railway-track-crack-detection-using-yolov5
+  project: railway-track-fault-detection-hrem8
+  version: 4
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/railway-track-crack-detection-using-yolov5/railway-track-fault-detection-hrem8/dataset/4
