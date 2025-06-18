@@ -32,12 +32,12 @@ except ImportError:
 
 import numpy as np
 import torch
+torch.use_deterministic_algorithms(False)
 import torch.distributed as dist
 import torch.nn as nn
 import yaml
 from torch.optim import lr_scheduler
 from tqdm import tqdm
-
 FILE = Path(__file__).resolve()
 ROOT = FILE.parents[0]  # YOLOv5 root directory
 if str(ROOT) not in sys.path:
@@ -98,7 +98,6 @@ LOCAL_RANK = int(os.getenv("LOCAL_RANK", -1))  # https://pytorch.org/docs/stable
 RANK = int(os.getenv("RANK", -1))
 WORLD_SIZE = int(os.getenv("WORLD_SIZE", 1))
 GIT_INFO = check_git_info()
-
 
 def train(hyp, opt, device, callbacks):
     """
@@ -565,10 +564,10 @@ def parse_opt(known=False):
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--weights", type=str, default=ROOT / "yolov5m.pt", help="initial weights path")
-    parser.add_argument("--cfg", type=str, default="C:/Users/21435/Desktop/railway2/yolov5-master/models/yolov5m.yaml",help= "model.yaml path")
-    parser.add_argument("--data", type=str, default="C:/Users/21435/Desktop/railway2/data.yaml", help="dataset.yaml path")
+    parser.add_argument("--cfg", type=str, default="E:/railway2/yolov5-master/models/yolov5m.yaml",help= "model.yaml path")
+    parser.add_argument("--data", type=str, default="E:/railway2/data.yaml", help="dataset.yaml path")
     parser.add_argument("--hyp", type=str, default=ROOT / "data/hyps/hyp.scratch-low.yaml", help="hyperparameters path")
-    parser.add_argument("--epochs", type=int, default=100, help="total training epochs")
+    parser.add_argument("--epochs", type=int, default=80, help="total training epochs")
     parser.add_argument("--batch-size", type=int, default=16, help="total batch size for all GPUs, -1 for autobatch")
     parser.add_argument("--imgsz", "--img", "--img-size", type=int, default=640, help="train, val image size (pixels)")
     parser.add_argument("--rect", action="store_true", help="rectangular training")

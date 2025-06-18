@@ -1,9 +1,8 @@
-path: "C:/Users/21435/Desktop/railway2/data"
-train: "C:/Users/21435/Desktop/railway2/train/images"
-val: "C:/Users/21435/Desktop/railway2/val/images"
-test: "C:/Users/21435/Desktop/railway2/try"
-nc: 3
-names: ['error1','error2','error3']
+train: "E:/railway2/train/images"
+val: "E:/railway2/val/images"
+test: "E:/railway2/try/images"
+nc: 4
+names: ['loss','loss2','duan lie','Poor contact']
 
 roboflow:
   workspace: railway-track-crack-detection-using-yolov5

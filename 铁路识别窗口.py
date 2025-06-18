@@ -17,13 +17,13 @@ class MyApp(QMainWindow):
         self.setWindowTitle("图像识别工具")
         self.setGeometry(100, 100, 800, 600)
 
-        # 模型加载（假设你用的是 YOLOv5）
+        # 模型加载
         self.model = torch.hub.load(
-            r'C:\Users\21435\Desktop\railway2\yolov5-master',  # 本地 yolov5 目录（含 hubconf.py）
+            r'E:\railway2\yolov5-master',
             'custom',
-            path=r'C:\Users\21435\Desktop\railway2\yolov5-master\runs\train\exp7\weights\best.pt',
+            path=r'E:\railway2\yolov5-master\runs\train\exp24\weights\best.pt',
             source='local'
-        )# 替换成你自己的模型路径
+        )
 
         # UI 元素
         self.label = QLabel("请上传图片", self)

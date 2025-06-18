@@ -1,7 +1,7 @@
 # Ultralytics 🚀 AGPL-3.0 License - https://ultralytics.com/license
 
 # Parameters
-nc: 80 # number of classes
+nc: 4 # number of classes
 depth_multiple: 0.67 # model depth multiple
 width_multiple: 0.75 # layer channel multiple
 anchors:
@@ -18,11 +18,14 @@ backbone:
     [-1, 3, C3, [128]],
     [-1, 1, Conv, [256, 3, 2]], # 3-P3/8
     [-1, 6, C3, [256]],
-    [-1, 1, Conv, [512, 3, 2]], # 5-P4/16
+    [-1, 1, CBAM, [192]], # CBAM1: 确保通道数与上一层C3的输出通道数相同 (192)
+    [-1, 1, Conv, [512, 3, 2]], # 5-P4/16 (注意：这里索引变了，因为CBAM是新加的)
     [-1, 9, C3, [512]],
-    [-1, 1, Conv, [1024, 3, 2]], # 7-P5/32
+    [-1, 1, CBAM, [384]], # CBAM2: 确保通道数与上一层C3的输出通道数相同 (384)
+    [-1, 1, Conv, [1024, 3, 2]], # 9-P5/32 (注意：这里索引变了，因为CBAM是新加的)
     [-1, 3, C3, [1024]],
-    [-1, 1, SPPF, [1024, 5]], # 9
+    [-1, 1, CBAM, [768]], # CBAM3: 确保通道数与上一层C3的输出通道数相同 (768)
+    [ -1, 1, SPPF, [ 1024, 5 ] ], # 12
   ]
 
 # YOLOv5 v6.0 head
